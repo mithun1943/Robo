@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Robo Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      padding-top: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .robot {
+      font-size: 100px;
+      display: inline-block;
+      animation: idle 2s infinite alternate;
+    }
+
+    .action-buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      background-color: #3c8dbc;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2e6e9e;
+    }
+
+    /* Robot Animations */
+    @keyframes moveForward {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-100px); }
+    }
+
+    @keyframes turn {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes jump {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-80px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes idle {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    .move {
+      animation: moveForward 1s forwards;
+    }
+
+    .turn {
+      animation: turn 1s forwards;
+    }
+
+    .jump {
+      animation: jump 1s forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🤖 CSS Robo Action</h1>
+  <div id="robot" class="robot">🤖</div>
+
+  <div class="action-buttons">
+    <button onclick="setAction('move')">Move Forward</button>
+    <button onclick="setAction('turn')">Turn</button>
+    <button onclick="setAction('jump')">Jump</button>
+  </div>
+
+  <script>
+    const robot = document.getElementById('robot');
+
+    function setAction(action) {
+      robot.className = 'robot'; // Reset class
+      void robot.offsetWidth;    // Force reflow to restart animation
+      robot.classList.add(action);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Robo Action Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    #robot {
+      font-size: 100px;
+      transition: transform 0.5s;
+    }
+
+    button {
+      margin: 10px;
+      padding: 15px 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🤖 Robo Action Panel</h1>
+  <div id="robot">🤖</div>
+
+  <div>
+    <button onclick="moveForward()">Move Forward</button>
+    <button onclick="turnLeft()">Turn Left</button>
+    <button onclick="turnRight()">Turn Right</button>
+    <button onclick="resetPosition()">Reset</button>
+  </div>
+
+  <script>
+    const robot = document.getElementById('robot');
+    let position = 0;
+    let rotation = 0;
+
+    function moveForward() {
+      position += 50;
+      robot.style.transform = `translateY(-${position}px) rotate(${rotation}deg)`;
+    }
+
+    function turnLeft() {
+      rotation -= 45;
+      robot.style.transform = `translateY(-${position}px) rotate(${rotation}deg)`;
+    }
+
+    function turnRight() {
+      rotation += 45;
+      robot.style.transform = `translateY(-${position}px) rotate(${rotation}deg)`;
+    }
+
+    function resetPosition() {
+      position = 0;
+      rotation = 0;
+      robot.style.transform = `translateY(0px) rotate(0deg)`;
+    }
+  </script>
+
+</body>
+</html>
